@@ -2,6 +2,7 @@ package com.hhh.test.linkedlist_using_iterator;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.junit.Before;
@@ -56,4 +57,33 @@ public class LinkedListTest {
 		it.next();it.next();it.remove();
 		assertTrue(it.next()==3 && list.getLength()==3);
 	}
+	
+	@Test
+	public void usingForLoopTest() {
+		list.add(0);list.add(1);list.add(2);list.add(3);
+		ArrayList<Integer> sampleArray = new ArrayList<Integer>();
+		for(Integer data: list)
+			sampleArray.add(data);
+		assertTrue(list.getLength()==sampleArray.size());
+	}
+	
+	@Test
+	public void removeTest() {
+		list.add(0);list.add(1);list.add(2);list.add(3);
+		list.remove(3);
+		assertTrue(list.getLength()==3 && list.contains(3)==false);
+	}
+	
+	@Test
+	public void containsTestPositive() {
+		list.add(0);list.add(1);list.add(2);list.add(3);
+		assertTrue(list.contains(3));
+	}
+	@Test
+	public void containsTestNegative() {
+		list.add(0);list.add(1);list.add(2);list.add(3);
+		list.remove(0);
+		assertFalse(list.contains(0));
+	}
+	
 }
